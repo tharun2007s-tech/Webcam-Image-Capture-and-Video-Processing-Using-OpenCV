@@ -65,43 +65,43 @@ if not ret:
 ```
   # Step 3: Save a frame as a JPG image using cv2.imwrite()[cite: 1]
   ```
-        if not image_saved:
-            cv2.imwrite('captured_frame.jpg', frame)
-            print("Saved initial frame as 'captured_frame.jpg'.")
-            image_saved = True
+  if not image_saved:
+    cv2.imwrite('captured_frame.jpg', frame)
+    print("Saved initial frame as 'captured_frame.jpg'.")
+    image_saved = True
 ```
         
 # Step 4: Display the live video stream using cv2.imshow()[cite: 1]
 ```
-        cv2.imshow('Live Video Stream', frame)
+cv2.imshow('Live Video Stream', frame)
 ```
 
 # Step 5: Resize the frame and rotate it using OpenCV functions, then display the processed frames[cite: 1]
 # Resize the frame to 50% scale
 ```
-        resized_frame = cv2.resize(frame, (0, 0), fx=0.5, fy=0.5)
+resized_frame = cv2.resize(frame, (0, 0), fx=0.5, fy=0.5)
 ```
 # Rotate the frame by 90 degrees around its center
 ```
-        height, width = frame.shape[:2]
-        center = (width / 2, height / 2)
-        rot_matrix = cv2.getRotationMatrix2D(center, angle=90, scale=1.0)
-        rotated_frame = cv2.warpAffine(frame, rot_matrix, (width, height))
+height, width = frame.shape[:2]
+center = (width / 2, height / 2)
+rot_matrix = cv2.getRotationMatrix2D(center, angle=90, scale=1.0)
+rotated_frame = cv2.warpAffine(frame, rot_matrix, (width, height))
 ```
 # Display the processed frames
 ```
-        cv2.imshow('Resized Frame', resized_frame)
-        cv2.imshow('Rotated Frame', rotated_frame)
+cv2.imshow('Resized Frame', resized_frame)
+cv2.imshow('Rotated Frame', rotated_frame)
 ```
 # Press the 'q' key on your keyboard to exit the loop
 ```
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
+if cv2.waitKey(1) & 0xFF == ord('q'):
+    break
 ```
 # Release the webcam and close all OpenCV windows
 ```
-    cap.release()
-    cv2.destroyAllWindows()
+cap.release()
+cv2.destroyAllWindows()
 ```
 ```
 if __name__ == "__main__":
